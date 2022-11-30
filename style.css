@@ -5,7 +5,14 @@
 }
 
 body {
-    background-color: darkcyan;
+    background: linear-gradient(-180deg, #bbd2c5 0%, #273137 100%);
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+h1 {
+    font-size: 48px;
+    color: rgb(22, 23, 26);
 }
 
 .list-group {
@@ -15,4 +22,8 @@ body {
 .strike_out {
     text-decoration: line-through;
     color: grey;
+}
+
+.fa-solid {
+    color: crimson;
 }
