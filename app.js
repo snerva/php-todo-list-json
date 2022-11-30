@@ -4,7 +4,7 @@ createApp({
         return {
             tasks: [],
             api_url: 'server.php',
-            newTask: "",
+            newTask: ''
         }
     },
     methods: {
@@ -21,13 +21,20 @@ createApp({
                 newTask: this.newTask,
             };
             axios
-                .post(server.php, data, {
+                .post(this.api_url, data, {
                     headers: { "Content-Type": "multipart/form-data" }
                 })
                 .then(response => {
-                    console.log(response);
+                    //console.log(response);
                     this.tasks = response.data;
                 })
+        },
+        changeStatus(task) {
+            if (task.done === true) {
+                task.done = false
+            } else {
+                task.done = true
+            }
         }
     },
     mounted() {

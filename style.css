@@ -11,3 +11,8 @@ body {
 .list-group {
     background-color: white;
 }
+
+.strike_out {
+    text-decoration: line-through;
+    color: grey;
+}
