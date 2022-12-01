@@ -3,7 +3,7 @@ createApp({
     data() {
         return {
             tasks: [],
-            api_url: 'server.php',
+            api_url: 'Controls/server.php',
             newTask: ''
         }
     },
@@ -21,7 +21,22 @@ createApp({
                 newTask: this.newTask,
             };
             axios
-                .post(this.api_url, data, {
+                .post('Controls/addTask.php', data, {
+                    headers: { "Content-Type": "multipart/form-data" }
+                })
+                .then(response => {
+                    //console.log(response);
+                    this.tasks = response.data;
+                    this.newTask = '';
+                })
+        },
+        changeStatus(index) {
+            const data = {
+                'taskIndex': index,
+                'done': true
+            };
+            axios
+                .post('Controls/changeStatus.php', data, {
                     headers: { "Content-Type": "multipart/form-data" }
                 })
                 .then(response => {
@@ -29,15 +44,18 @@ createApp({
                     this.tasks = response.data;
                 })
         },
-        changeStatus(task) {
-            if (task.done === true) {
-                task.done = false
-            } else {
-                task.done = true
-            }
-        },
         taskDone(index) {
-            this.tasks.splice(index, 1)
+            const data = {
+                'taskIndex': index
+            };
+            axios
+                .post('Controls/taskDone.php', data, {
+                    headers: { "Content-Type": "multipart/form-data" }
+                })
+                .then(response => {
+                    //console.log(response);
+                    this.tasks = response.data;
+                })
         }
     },
     mounted() {

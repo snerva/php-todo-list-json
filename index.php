@@ -19,16 +19,18 @@
         <div class="container">
             <div class="tasklist mx-5 p-3">
                 <ul class="list-group list-group-flush w-50 p-3 bg-white rounded-2 m-auto">
-                    <li @click="changeStatus(task)" class="list-group-item d-flex justify-content-between" v-for="(task, index) in tasks" :class="{strike_out: task.done}">{{task.text}}<i class="fa-solid fa-trash fa-fw" @click.stop="taskDone(index)"></i></li>
+                    <li class="list-group-item d-flex justify-content-between" v-for="(task, index) in tasks">
+                        <span @click.stop="changeStatus(index)" :class="{strike_out : task.done}">{{task.text}}</span><i class="fa-solid fa-trash fa-fw" @click.stop="taskDone(index)"></i>
+                    </li>
                 </ul>
             </div>
 
             <div class="addTask p-4">
-                <form action="index.php" method="post" class="input-group mb-3 w-50 m-auto px-3">
+                <div class="input-group mb-3 w-50 m-auto px-3">
                     <input type="text" class="form-control" placeholder="New Task..." name="newTask" id="newTask" v-model="newTask" @keyup.enter="addTask">
                     <button type="button" class="btn btn-primary" @click="addTask">Add
                         Task</button>
-                </form>
+                </div>
             </div>
         </div>
     </div>
