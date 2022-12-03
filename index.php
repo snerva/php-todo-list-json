@@ -20,7 +20,7 @@
             <div class="tasklist mx-5 p-3">
                 <ul class="list-group list-group-flush w-50 p-3 bg-white rounded-2 m-auto">
                     <li class="list-group-item d-flex justify-content-between" v-for="(task, index) in tasks">
-                        <span @click.stop="changeStatus(index)" :class="{strike_out : task.done}">{{task.text}}</span><i class="fa-solid fa-trash fa-fw" @click.stop="taskDone(index)"></i>
+                        <span @click.stop="changeStatus(index)" :class="{'strike_out' : (task.done)}">{{task.text}}</span><i class="fa-solid fa-trash " @click.stop="deleteTaskDone(index)"></i>
                     </li>
                 </ul>
             </div>

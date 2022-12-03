@@ -44,12 +44,12 @@ createApp({
                     this.tasks = response.data;
                 })
         },
-        taskDone(index) {
+        deleteTaskDone(index) {
             const data = {
                 'taskIndex': index
             };
             axios
-                .post('Controls/taskDone.php', data, {
+                .post('Controls/deleteTaskDone.php', data, {
                     headers: { "Content-Type": "multipart/form-data" }
                 })
                 .then(response => {

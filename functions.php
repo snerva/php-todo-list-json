@@ -7,10 +7,10 @@ function read_data($file)
     return json_decode($tasks, true);
 }
 
-function transform_array($taskList, $file)
+function transform_array($tasks)
 {
-    $jsonList = json_encode($taskList);
+    $jsonList = json_encode($tasks);
     //var_dum(jsonList));
-    file_put_contents($file, $jsonList);
+    file_put_contents('../tasks.json', $jsonList);
     return $jsonList;
 }
